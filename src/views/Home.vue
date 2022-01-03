@@ -123,9 +123,6 @@ main {
   position: relative;
   margin: 0 auto;
   max-width: 1106px;
-  // :first-child {
-  //   margin-bottom: 44px;
-  // }
 }
 
 .tourist_content {
@@ -133,7 +130,6 @@ main {
   flex-wrap: wrap;
   gap: 16px;
   margin: 0 auto;
-  background: palegoldenrod;
 }
 h3 {
   margin-bottom: 24px;

@@ -5,8 +5,12 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
     crossorigin="anonymous"
   />
-  <span>各地景點</span><i class="fas fa-arrow-right"></i><span>{{ currrentData.ScenicSpotName }}</span>
+
   <main>
+    <div class="nav">
+      <span>各地景點</span><i class="fas fa-arrow-right"></i><span>{{ currrentData.ScenicSpotName }}</span>
+    </div>
+
     <article>
       <h2>{{ currrentData.ScenicSpotName }}</h2>
       <p>{{ currrentData.Description }}</p>
@@ -60,8 +64,35 @@ export default {
   // outline: 1px solid red;
 }
 main {
-  padding: 0px 48px;
+  padding: 20px 48px;
 }
+.nav {
+  margin-bottom: 20px;
+}
+.fa-arrow-right {
+  display: flex;
+  align-items: center;
+  margin: 0px 10px;
+  // animation: arrow 3s infinite;
+  @keyframes arrow {
+    0% {
+      font-size: 14px;
+    }
+    20% {
+      font-size: 18px;
+    }
+    50% {
+      font-size: 20px;
+    }
+    70% {
+      font-size: 16px;
+    }
+    100% {
+      font-size: 14px;
+    }
+  }
+}
+
 section {
   padding: 24px 0px;
   @media (min-width: 576px) {
