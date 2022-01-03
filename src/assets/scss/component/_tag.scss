@@ -1,0 +1,18 @@
+@use '../base/color.scss';
+
+.tag {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    justify-content: right;
+}
+
+.tag p {
+    background-color: color.$tag_color;
+    padding: 4px;
+    border-radius: 3px;
+    color: color.$Primary_A11y;
+    margin-right: 10px;
+    font-weight: 700;
+}

@@ -1,0 +1,51 @@
+@use "../base/color.scss";
+.wrap_img {
+  img {
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 576px) {
+  .card {
+    width: 358px;
+  }
+}
+
+.tourist_content {
+  a {
+    display: inline-block;
+    margin-right: 8px;
+  }
+  gap: 16px;
+}
+
+.card {
+  box-shadow: 1px 1px 10px color.$black_500;
+  border-radius: 15px;
+  position: relative;
+}
+.card > p {
+  margin-bottom: 0;
+}
+.address,
+.phone {
+  display: flex;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.phone > p {
+  margin-right: 8px;
+}
+.card_content {
+  padding: 8px 8px 12px 8px;
+  div {
+    margin-bottom: 8px;
+  }
+}
+
+.card_content > p {
+  margin: 0;
+}

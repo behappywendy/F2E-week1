@@ -1,0 +1,8 @@
+@use '../base/color.scss';
+@use '../base/reset.scss';
+footer {
+    text-align: center;
+    padding: 8px 0px 21px 0px;
+    background-color: color.$primary_light;
+    color: color.$Primary_A11y;
+}
