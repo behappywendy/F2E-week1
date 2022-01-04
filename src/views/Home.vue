@@ -14,7 +14,7 @@
   <main>
     <section>
       <h3>沒想法？試試這些...</h3>
-      <Carousel></Carousel>
+      <Carousel :allImage="allImage"></Carousel>
     </section>
     <section>
       <h3>熱門景點</h3>
@@ -44,10 +44,23 @@ export default {
   created() {
     Api.getScenicSpotData().then((response) => {
       this.scenicSpotData = response.data;
-      console.log(response);
     });
   },
   methods: {},
+  computed: {
+    allImage() {
+      // console.log("目前資料", this.scenicSpotData);
+      let images = [];
+      this.scenicSpotData.forEach((data) => {
+        if (!data.Picture.PictureUrl1) {
+          return;
+        }
+        images.push(data.Picture.PictureUrl1);
+        return;
+      });
+      return images;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
