@@ -22,7 +22,7 @@
         <Card v-for="scenicSpot in scenicSpotData" :key="scenicSpot.ScenicSpotID" :scenicSpot="scenicSpot"></Card>
       </div>
     </section>
-    <button @click="clickDate">點啊</button>
+    <!-- <button @click="clickDate">點啊</button> -->
     <!-- {{ checkOpenDate }} -->
   </main>
 </template>

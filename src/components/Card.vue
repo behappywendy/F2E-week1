@@ -96,20 +96,25 @@ export default {
   margin-bottom: 5px;
 }
 .openTime {
-  background: red;
-  flex-basis: 200px;
+  flex-basis: 180px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 .information {
   margin-bottom: 8.5px;
-  > div,
-  p {
+  > div {
     flex-grow: 1;
+  }
+  > p {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 }
 
