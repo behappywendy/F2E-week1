@@ -90,7 +90,7 @@ export default {
 .information {
   display: flex;
   font-size: 12px;
-  color: rgba(111, 111, 111, 1);
+  color: color.$black_600;
 }
 .adderss {
   margin-bottom: 5px;

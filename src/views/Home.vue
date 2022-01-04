@@ -19,11 +19,22 @@
     <section>
       <h3>熱門景點</h3>
       <div class="tourist_content">
-        <Card v-for="scenicSpot in scenicSpotData" :key="scenicSpot.ScenicSpotID" :scenicSpot="scenicSpot"></Card>
+        <Card
+          v-for="scenicSpot in scenicSpotData"
+          :key="scenicSpot.ScenicSpotID"
+          :scenicSpot="scenicSpot"
+        ></Card>
       </div>
+      <VuePaginationTw
+        :total-items="100"
+        :current-page="currentPage"
+        :per-page="perPage"
+        @page-changed="pageChanged($event)"
+        :go-button="false"
+        styled="centered"
+        class="vuePagination"
+      />
     </section>
-    <!-- <button @click="clickDate">點啊</button> -->
-    <!-- {{ checkOpenDate }} -->
   </main>
 </template>
 <script>
@@ -31,16 +42,21 @@ import Input from "@/components/Input";
 import Card from "@/components/Card";
 import Carousel from "@/components/Carousel";
 import Api from "@/services/Api";
+import VuePaginationTw from "vue-pagination-tw";
 export default {
   name: "Home",
   components: {
     Input,
     Card,
     Carousel,
+    VuePaginationTw,
   },
   data() {
     return {
       scenicSpotData: null,
+      currentPage: 1,
+      totalPage: 10,
+      perPage: 10,
     };
   },
   created() {
@@ -53,6 +69,10 @@ export default {
       this.scenicSpotData.map((scenicSpotData) => {
         console.log(scenicSpotData.OpenTime);
       });
+    },
+    pageChanged(pageNumber) {
+      console.log(pageNumber);
+      this.currentPage = pageNumber;
     },
   },
   computed: {
@@ -153,5 +173,18 @@ main {
 }
 h3 {
   margin-bottom: 24px;
+}
+::v-deep .vuePagination {
+  display: flex;
+  justify-content: center;
+  svg,
+  a {
+    color: color.$black_600;
+    width: 30px;
+    &:focus {
+      font-weight: 600;
+      color: color.$primary_Default;
+    }
+  }
 }
 </style>

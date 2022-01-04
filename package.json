@@ -18,6 +18,7 @@
     "jssha": "^3.2.0",
     "swiper": "^7.4.1",
     "vue": "^3.0.0",
+    "vue-pagination-tw": "^0.1.2",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },

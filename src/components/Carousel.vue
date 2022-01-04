@@ -1,5 +1,11 @@
 <template>
-  <swiper class="slide" :slides-per-view="3" :space-between="50" @swiper="onSwiper" @slideChange="onSlideChange">
+  <swiper
+    class="slide"
+    :slides-per-view="3"
+    :space-between="50"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
+  >
     <swiper-slide v-for="(image, index) in allImage" :key="index">
       <img :src="image" alt="" />
     </swiper-slide>
