@@ -170,6 +170,7 @@ main {
   flex-wrap: wrap;
   gap: 16px;
   margin: 0 auto;
+  margin-bottom: 80px;
 }
 h3 {
   margin-bottom: 24px;
@@ -177,6 +178,7 @@ h3 {
 ::v-deep .vuePagination {
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
   svg,
   a {
     color: color.$black_600;
