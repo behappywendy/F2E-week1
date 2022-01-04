@@ -17,19 +17,27 @@
     </article>
     <section>
       <div class="wrap_img">
-        <img :src="currrentData.Picture.PictureUrl1" :alt="currrentData.Picture.PictureDescription1" />
+        <img :src="checkImageUrl.url" :alt="checkImageUrl.description" />
       </div>
       <div class="information">
-        <p>地址</p>
-        <p>{{ currrentData.Address }}</p>
-        <p>電話服務</p>
-        <p>{{ currrentData.Phone }}</p>
-        <p>開放時間</p>
-        <p>{{ currrentData.OpenTime }}</p>
-        <p>詳細資訊</p>
+        <p>地址 : {{ currrentData.Address }}</p>
+        <p>電話服務 : {{ currrentData.Phone }}</p>
+        <p>開放時間 : {{ currrentData.OpenTime }}</p>
+        <h3>詳細資訊</h3>
         <p>{{ currrentData.DescriptionDetail }}</p>
       </div>
     </section>
+    <div>
+      <h3>景點地圖</h3>
+      <iframe
+        :src="createPosition"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
   </main>
 </template>
 <script>
@@ -57,6 +65,29 @@ export default {
       console.log(this.currrentData);
     },
   },
+  computed: {
+    createPosition() {
+      const position = {};
+      position.PositionLat = this.currrentData.Position.PositionLat; //緯度
+      position.PositionLon = this.currrentData.Position.PositionLon; //經度
+      return `https://maps.google.com/?ie=UTF8&t=m&ll=${position.PositionLat},${position.PositionLon}&spn=0.003381,0.017231&z=18&output=embed`;
+    },
+    checkImageUrl() {
+      const image = {
+        url: "",
+        description: "",
+      };
+      if (this.currrentData.Picture.PictureUrl1) {
+        image.url = this.currrentData.Picture.PictureUrl1;
+        image.description = this.currrentData.PictureDescription1;
+        return image;
+      } else {
+        image.url = require("./../assets/image/Picture-Empty-L.svg");
+        image.description = "目前沒有圖片";
+        return image;
+      }
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
@@ -76,7 +107,7 @@ main {
   // animation: arrow 3s infinite;
   @keyframes arrow {
     0% {
-      font-size: 14px;
+      font-size: 16px;
     }
     20% {
       font-size: 18px;
@@ -85,10 +116,10 @@ main {
       font-size: 20px;
     }
     70% {
-      font-size: 16px;
+      font-size: 18px;
     }
     100% {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 }
@@ -99,6 +130,9 @@ section {
     display: flex;
   }
 }
+article {
+  margin-bottom: 50px;
+}
 .wrap_img {
   @media (min-width: 576px) {
     width: 816px;
@@ -108,9 +142,24 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 20px;
   }
 }
+h2 {
+  margin-bottom: 10px;
+}
+h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 .information {
+  p {
+    margin-bottom: 10px;
+  }
+  h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
   @media (min-width: 576px) {
     width: 50%;
     padding: 0px 20px;
