@@ -22,6 +22,8 @@
         <Card v-for="scenicSpot in scenicSpotData" :key="scenicSpot.ScenicSpotID" :scenicSpot="scenicSpot"></Card>
       </div>
     </section>
+    <button @click="clickDate">點啊</button>
+    <!-- {{ checkOpenDate }} -->
   </main>
 </template>
 <script>
@@ -46,10 +48,15 @@ export default {
       this.scenicSpotData = response.data;
     });
   },
-  methods: {},
+  methods: {
+    clickDate() {
+      this.scenicSpotData.map((scenicSpotData) => {
+        console.log(scenicSpotData.OpenTime);
+      });
+    },
+  },
   computed: {
     allImage() {
-      // console.log("目前資料", this.scenicSpotData);
       let images = [];
       this.scenicSpotData.forEach((data) => {
         if (!data.Picture.PictureUrl1) {

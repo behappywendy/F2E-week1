@@ -7,7 +7,7 @@
           v-if="scenicSpot.Picture && scenicSpot.Picture.PictureUrl1"
           :alt="scenicSpot.Picture.PictureDescription1"
         />
-        <img v-else src="./../assets/image/Picture-Empty-L.svg" alt="no photo" />
+        <img v-else src="./../assets/image/Picture-Empty-L.svg" alt="暫時沒有圖片" />
       </div>
       <div class="card_content">
         <h4>{{ scenicSpot.ScenicSpotName }}</h4>
@@ -21,11 +21,11 @@
           <div class="wrap_img">
             <img src="./../assets/image/local_phone.svg" alt="電話小圖示" />
           </div>
-          <p>{{ scenicSpot.Phone }}</p>
+          <p>{{ translatePhone }}</p>
           <div class="wrap_img">
-            <img src="./../assets/image/access_time.svg" alt="全天" />
+            <img src="./../assets/image/access_time.svg" alt="開放時間" />
           </div>
-          <p>{{ scenicSpot.OpenTime }}</p>
+          <p class="openTime">{{ scenicSpot.OpenTime }}</p>
         </div>
         <div class="introduce">
           <p>{{ scenicSpot.DescriptionDetail }}</p>
@@ -43,6 +43,14 @@ export default {
   },
   data() {
     return {};
+  },
+  computed: {
+    translatePhone() {
+      if (this.scenicSpot.Phone.includes("886")) {
+        return this.scenicSpot.Phone.replace(/^886-/, 0);
+      }
+      return this.scenicSpot.Phone;
+    },
   },
 };
 </script>
@@ -73,7 +81,7 @@ export default {
 .card_content {
   padding: 8px 12px;
   .wrap_img {
-    width: 13.5px;
+    width: 15px;
     height: 15px;
     margin-right: 5px;
   }
@@ -87,12 +95,24 @@ export default {
 .adderss {
   margin-bottom: 5px;
 }
+.openTime {
+  background: red;
+  flex-basis: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
 .information {
   margin-bottom: 8.5px;
+  > div,
+  p {
+    flex-grow: 1;
+  }
 }
-.information p:nth-child(2) {
-  margin-right: 17.5px;
-}
+
 .introduce {
   font-size: 14px;
   p {
