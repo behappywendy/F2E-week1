@@ -3,8 +3,8 @@
     <div class="card">
       <div class="wrap_img">
         <img
-          :src="scenicSpot.Picture.PictureUrl1"
-          v-if="scenicSpot.Picture.PictureUrl1"
+          :src="scenicSpot.Picture && scenicSpot.Picture.PictureUrl1"
+          v-if="scenicSpot.Picture && scenicSpot.Picture.PictureUrl1"
           :alt="scenicSpot.Picture.PictureDescription1"
         />
         <img v-else src="./../assets/image/Picture-Empty-L.svg" alt="no photo" />
