@@ -11,7 +11,8 @@
     </div>
     <Input></Input>
   </header>
-  <main>
+  <Loading v-if="isLoading"></Loading>
+  <main v-else>
     <section>
       <h3>沒想法？試試這些...</h3>
       <Carousel :allImage="selectRandomPhoto"></Carousel>
@@ -43,16 +44,19 @@ import Card from "@/components/Card";
 import Carousel from "@/components/Carousel";
 import Api from "@/services/Api";
 import VuePaginationTw from "vue-pagination-tw";
+import Loading from "@/components/Loading.vue";
 export default {
   name: "Home",
   components: {
     Input,
     Card,
     Carousel,
+    Loading,
     VuePaginationTw,
   },
   data() {
     return {
+      isLoading: true,
       scenicSpotData: null,
       currentShowSpotData: [],
       page: {
@@ -64,6 +68,8 @@ export default {
   created() {
     Api.getScenicSpotData().then((response) => {
       this.scenicSpotData = response.data;
+      console.log("載入完成");
+      this.isLoading = false;
       this.currentShowSpotData = this.scenicSpotData.slice(0, 10);
     });
   },
