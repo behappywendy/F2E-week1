@@ -37,9 +37,11 @@ function getAuthorizationHeader() {
 
 export default {
   getScenicSpotData() {
-    return api.get("ScenicSpot?%24top=30&%24format=JSON");
+    return api.get("ScenicSpot?%24format=JSON");
   },
   getDetailData(id) {
-    return api.get(`ScenicSpot?%24filter=contains(ScenicSpotID%2C'${id}')&%24top=30&%24format=JSON`);
+    return api.get(
+      `ScenicSpot?%24filter=contains(ScenicSpotID%2C'${id}')&%24format=JSON`
+    );
   },
 };

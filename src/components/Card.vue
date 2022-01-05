@@ -7,7 +7,11 @@
           v-if="scenicSpot.Picture && scenicSpot.Picture.PictureUrl1"
           :alt="scenicSpot.Picture.PictureDescription1"
         />
-        <img v-else src="./../assets/image/Picture-Empty-L.svg" alt="暫時沒有圖片" />
+        <img
+          v-else
+          src="./../assets/image/Picture-Empty-L.svg"
+          alt="暫時沒有圖片"
+        />
       </div>
       <div class="card_content">
         <h4>{{ scenicSpot.ScenicSpotName }}</h4>
@@ -69,6 +73,10 @@ export default {
   }
   > .wrap_img {
     height: 171px;
+  }
+  &:hover {
+    transform: scale(1.1, 1.1);
+    box-shadow: 0px 26px 14px -4px color.$black_500;
   }
 }
 .wrap_img {
