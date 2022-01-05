@@ -1,4 +1,4 @@
-# week1
+# week1-台灣旅遊景點導覽
 使用vue3、Sass、Bootstrap5
 
 ## Project setup
