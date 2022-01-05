@@ -14,21 +14,21 @@
   <main>
     <section>
       <h3>沒想法？試試這些...</h3>
-      <Carousel :allImage="allImage"></Carousel>
+      <Carousel :allImage="selectRandomPhoto"></Carousel>
     </section>
     <section>
       <h3>熱門景點</h3>
       <div class="tourist_content">
         <Card
-          v-for="scenicSpot in scenicSpotData"
+          v-for="scenicSpot in currentShowSpotData"
           :key="scenicSpot.ScenicSpotID"
           :scenicSpot="scenicSpot"
         ></Card>
       </div>
       <VuePaginationTw
-        :total-items="100"
-        :current-page="currentPage"
-        :per-page="perPage"
+        :total-items="caculateAllItems"
+        :current-page="page.currentPage"
+        :per-page="page.perPage"
         @page-changed="pageChanged($event)"
         :go-button="false"
         styled="centered"
@@ -54,14 +54,17 @@ export default {
   data() {
     return {
       scenicSpotData: null,
-      currentPage: 1,
-      totalPage: 10,
-      perPage: 10,
+      currentShowSpotData: [],
+      page: {
+        currentPage: 1,
+        perPage: 10,
+      },
     };
   },
   created() {
     Api.getScenicSpotData().then((response) => {
       this.scenicSpotData = response.data;
+      this.currentShowSpotData = this.scenicSpotData.slice(0, 10);
     });
   },
   methods: {
@@ -71,8 +74,10 @@ export default {
       });
     },
     pageChanged(pageNumber) {
-      console.log(pageNumber);
-      this.currentPage = pageNumber;
+      this.page.currentPage = pageNumber;
+    },
+    getRandom() {
+      return Math.floor(Math.random() * this.scenicSpotData.length);
     },
   },
   computed: {
@@ -87,6 +92,28 @@ export default {
       });
       return images;
     },
+    caculateAllItems() {
+      return Math.ceil(this.scenicSpotData.length);
+    },
+    selectRandomPhoto() {
+      let photoIndex = [];
+      for (let count = 0; count <= 30; count++) {
+        photoIndex.push(this.getRandom());
+      }
+      let images = photoIndex.map((randomIndex) => {
+        if (this.scenicSpotData[randomIndex].Picture.PictureUrl1) {
+          return this.scenicSpotData[randomIndex].Picture.PictureUrl1;
+        }
+      });
+      return images.filter(Boolean);
+    },
+  },
+  watch: {
+    "page.currentPage": function () {
+      let start = (this.page.currentPage - 1) * this.page.perPage;
+      let end = this.page.currentPage * this.page.perPage;
+      this.currentShowSpotData = this.scenicSpotData.slice(start, end);
+    },
   },
 };
 </script>
@@ -98,6 +125,25 @@ header {
   background-color: color.$primary_light;
   position: relative;
   margin-bottom: 68px;
+  p {
+    animation: text 5s ease-in-out;
+  }
+}
+@keyframes text {
+  0% {
+    transform: translate(-200px, 200px);
+    transform: scale(1.1);
+    color: rgba(15, 106, 145, 1);
+  }
+  50% {
+    transform: translate(-100px, 200px);
+    transform: scale(2);
+    color: rgba(141, 220, 237, 1);
+  }
+  100% {
+    transform: translate(0px, 0px);
+    transform: scale(1);
+  }
 }
 .logo {
   width: 286px;
@@ -178,7 +224,9 @@ h3 {
 ::v-deep .vuePagination {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  p {
+    display: none;
+  }
   svg,
   a {
     color: color.$black_600;
@@ -188,5 +236,9 @@ h3 {
       color: color.$primary_Default;
     }
   }
+}
+
+section {
+  margin-bottom: 100px;
 }
 </style>
