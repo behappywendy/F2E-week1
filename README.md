@@ -1,5 +1,12 @@
 # week1-台灣旅遊景點導覽
-使用vue3、Sass、Bootstrap5
+
+## 使用技術
+* vue3
+* Sass
+* Bootstrap5
+* Vue CLI
+* Vue Router
+* Axios
 
 ## Project setup
 ```
