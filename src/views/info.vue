@@ -8,7 +8,9 @@
 
   <main>
     <div class="nav">
-      <span>各地景點</span><i class="fas fa-arrow-right"></i><span>{{ currrentData.ScenicSpotName }}</span>
+      <router-link :to="{ name: 'Home' }"><span>各地景點</span></router-link
+      ><i class="fas fa-arrow-right"></i
+      ><span>{{ currrentData.ScenicSpotName }}</span>
     </div>
 
     <article>
@@ -27,8 +29,8 @@
         <p>{{ currrentData.DescriptionDetail }}</p>
       </div>
     </section>
-    <div>
-      <h3>景點地圖</h3>
+    <div class="map">
+      <h3>景點地圖 <i class="fas fa-map-marker-alt"></i></h3>
       <iframe
         :src="createPosition"
         width="600"
@@ -96,6 +98,7 @@ export default {
 }
 main {
   padding: 20px 48px;
+  background: rgba(141, 220, 237, 1);
 }
 .nav {
   margin-bottom: 20px;
@@ -109,14 +112,8 @@ main {
     0% {
       font-size: 16px;
     }
-    20% {
-      font-size: 18px;
-    }
     50% {
       font-size: 20px;
-    }
-    70% {
-      font-size: 18px;
     }
     100% {
       font-size: 16px;
@@ -125,7 +122,12 @@ main {
 }
 
 section {
-  padding: 24px 0px;
+  padding: 24px 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 13px 10px -7px rgb(0 0 0 / 10%);
+  border: 10px solid rgba(15, 106, 145, 1);
+  margin-bottom: 50px;
   @media (min-width: 576px) {
     display: flex;
   }
@@ -162,7 +164,13 @@ h3 {
   }
   @media (min-width: 576px) {
     width: 50%;
-    padding: 0px 20px;
+    padding: 20px 20px;
+  }
+}
+.map {
+  margin-bottom: 80px;
+  i {
+    color: rgb(226, 55, 55);
   }
 }
 </style>
