@@ -1,11 +1,27 @@
 <template>
-  <input type="search" placeholder="試試看 台北古蹟" />
+  <input
+    type="search"
+    placeholder="試試看 台北古蹟"
+    v-model.trim="message"
+    @keyup.enter="keydownSearchInput"
+  />
 </template>
 <script>
 export default {
   name: "Input",
   data() {
-    return {};
+    return {
+      message: "",
+      filterData: [],
+    };
+  },
+  methods: {
+    keydownSearchInput() {
+      this.$router.push({
+        name: "Search",
+        query: { keyword: `${this.message}` },
+      });
+    },
   },
 };
 </script>

@@ -148,22 +148,23 @@ body {
 .circular-bg {
   animation-name: colorchange;
   animation-duration: 3s;
-  // animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
   @keyframes colorchange {
     0% {
       border: 10px solid;
-      border-color: rgba(1, 146, 204, 0.3) rgb(179, 177, 177);
+      border-color: rgba(1, 146, 204, 0.3);
       transform: rotate(10deg);
     }
     50% {
       border: 30px solid;
-      border-color: rgba(4, 4, 48, 0.164) orange;
+      border-color: rgba(4, 4, 48, 0.164);
+      box-shadow: 0 550px 0 -250px #1a6b91 inset;
       transform: rotate(-10deg);
     }
 
     100% {
       border: 10px solid;
-      border-color: rgba(156, 118, 48, 0.3) rgb(179, 177, 177);
+      border-color: rgba(156, 118, 48, 0.3);
       transform: rotate(10deg);
     }
   }
@@ -171,7 +172,6 @@ body {
   width: 500px;
   height: 500px;
   box-shadow: 0 550px 0 -250px #093d55 inset;
-  // border: 1px solid;
   position: relative;
   z-index: 5;
   margin: 20px auto;
@@ -182,7 +182,6 @@ body {
   height: 80px;
   box-shadow: -40px 0px 0 0 #fff inset;
   border-radius: 50%;
-  background-color: #093d55;
   position: absolute;
   right: 130px;
   top: 50px;

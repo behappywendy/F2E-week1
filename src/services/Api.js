@@ -44,4 +44,9 @@ export default {
       `ScenicSpot?%24filter=contains(ScenicSpotID%2C'${id}')&%24format=JSON`
     );
   },
+  getSearchData(keyword) {
+    return api.get(
+      `ScenicSpot?%24filter=contains(DescriptionDetail,'${keyword}')&%24format=JSON`
+    );
+  },
 };
