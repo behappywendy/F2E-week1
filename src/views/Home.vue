@@ -68,7 +68,6 @@ export default {
   created() {
     Api.getScenicSpotData().then((response) => {
       this.scenicSpotData = response.data;
-      console.log("載入完成");
       this.isLoading = false;
       this.currentShowSpotData = this.scenicSpotData.slice(0, 10);
     });

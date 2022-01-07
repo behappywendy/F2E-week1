@@ -99,6 +99,13 @@ export default {
 main {
   padding: 20px 48px;
   background: rgba(141, 220, 237, 1);
+  a {
+    color: rgba(15, 106, 145, 1);
+    font-weight: 700;
+    &:hover {
+      color: #85929e;
+    }
+  }
 }
 .nav {
   margin-bottom: 20px;
@@ -107,16 +114,20 @@ main {
   display: flex;
   align-items: center;
   margin: 0px 10px;
-  // animation: arrow 3s infinite;
-  @keyframes arrow {
+  animation: text 5s;
+}
+.nav > span {
+  animation: text 5s;
+  @keyframes text {
     0% {
-      font-size: 16px;
+      // font-size: 16px;
+      transform: translateX(0px);
     }
     50% {
-      font-size: 20px;
+      transform: translateX(20px);
     }
     100% {
-      font-size: 16px;
+      transform: translateX(0px);
     }
   }
 }
