@@ -12,8 +12,11 @@
   </swiper>
 </template>
 <script>
+import { Alert } from "bootstrap/dist/js/bootstrap.esm.js";
+console.log(Alert);
 import { Swiper } from "swiper/vue/swiper.js";
 import { SwiperSlide } from "swiper/vue/swiper-slide.js";
+// import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/swiper.min.css";
 export default {
   name: "Carousel",

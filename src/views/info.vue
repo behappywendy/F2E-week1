@@ -33,8 +33,6 @@
       <h3>景點地圖 <i class="fas fa-map-marker-alt"></i></h3>
       <iframe
         :src="createPosition"
-        width="600"
-        height="450"
         style="border: 0"
         allowfullscreen=""
         loading="lazy"
@@ -182,6 +180,12 @@ h3 {
   margin-bottom: 80px;
   i {
     color: rgb(226, 55, 55);
+  }
+}
+@media (min-width: 576px) {
+  iframe {
+    width: 450px;
+    height: 500px;
   }
 }
 </style>
