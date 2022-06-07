@@ -1,5 +1,6 @@
 <template>
-  <main>
+  <Loading v-if="isLoading"></Loading>
+  <main v-else>
     <p>搜尋結果{{ currentShowSpotData.length }}筆</p>
     <div class="tourist_content">
       <Card
@@ -14,14 +15,17 @@
 <script>
 import Card from "@/components/Card";
 import Api from "@/services/Api";
+import Loading from "@/components/Loading.vue";
 export default {
   name: "Search",
   components: {
     Card,
+    Loading,
   },
   data() {
     return {
       currentShowSpotData: [],
+      isLoading: true,
     };
   },
   created() {
@@ -32,6 +36,9 @@ export default {
       let { keyword } = this.$route.query;
       let getData = await Api.getSearchData(keyword);
       this.currentShowSpotData = getData.data;
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 1500);
     },
   },
 };

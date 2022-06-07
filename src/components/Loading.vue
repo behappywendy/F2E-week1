@@ -170,7 +170,7 @@ body {
   }
   border-radius: 50%;
   width: 500px;
-  height: 500px;
+  height: calc(100vh - 75px);
   box-shadow: 0 550px 0 -250px #093d55 inset;
   position: relative;
   z-index: 5;
